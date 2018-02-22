@@ -1,7 +1,7 @@
 class Api::V1::EventsController < ApplicationController
 
   def index #see all my eventbrite events users are going to
-    @events = Events.all
+    @events = Event.all
     render json: @events
   end
 
