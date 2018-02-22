@@ -5,10 +5,6 @@ class Api::V1::UsersController < ApplicationController
     render json: @users
   end
 
-  def new #start new user, nothing to render
-    @user = User.new
-  end
-
   def create #create new user
     @user = User.create(user_params)
     render json: @user, status: 201
@@ -17,10 +13,6 @@ class Api::V1::UsersController < ApplicationController
   def show #display a users info
     @user = User.find(params[:id])
     render json: @user, status: 200
-  end
-
-  def edit #find user to edit
-    @user = User.find(params[:id])
   end
 
   def update #update user info

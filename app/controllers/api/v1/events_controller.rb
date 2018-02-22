@@ -5,10 +5,6 @@ class Api::V1::EventsController < ApplicationController
     render json: @events
   end
 
-  def new #start save new eventbrite event, nothing to render
-    @event = Event.new
-  end
-
   def create #store another eventbrite event
     @event = Event.create(event_params)
     render json: @event, status: 201
@@ -17,10 +13,6 @@ class Api::V1::EventsController < ApplicationController
   # def show #display a event info (only eventbrite id)
   #   @event = Event.find(params[:id])
   #   render json: @event, status: 200
-  # end
-
-  # def edit #find event to edit
-  #   @event = Event.find(params[:id])
   # end
 
   # def update #update event eventbrite id

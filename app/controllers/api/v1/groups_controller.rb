@@ -5,10 +5,6 @@ class Api::V1::GroupsController < ApplicationController
     render json: @group
   end
 
-  def new #start new group, nothing to render
-    @group = Group.new
-  end
-
   def create #create new group
     @group = Group.create(group_params)
     render json: @group, status: 201
@@ -19,10 +15,6 @@ class Api::V1::GroupsController < ApplicationController
     render json: @group, status: 200
   end
 
-  # def edit #find group to edit
-  #   @group = Group.find(params[:id])
-  # end
-
   # def update #update group info
   #   @group = Group.find(params[:id])
   #   @group.update(group_params)
@@ -30,7 +22,7 @@ class Api::V1::GroupsController < ApplicationController
   #   render json: @group
   # end
 
-  def destroy #delete group 
+  def destroy #delete group
     @group = Group.find(params[:id])
     @group.destroy
     render json: {message:"Group Deleted"}

@@ -3,10 +3,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :events, only: [:index, :new, :create, :destroy]
-      resources :groups, only: [:index, :new, :create, :show, :destroy]
-      resources :user_groups, only: [:index, :new, :create, :edit, :update, :destroy]
-      resources :users
+      resources :events, only: [:index, :create, :destroy]
+      resources :groups, only: [:index, :create, :show, :destroy]
+      resources :user_groups, only: [:index, :create, :update, :destroy]
+      resources :users, only: [:index, :create, :show, :update, :destroy]
     end
   end
 
