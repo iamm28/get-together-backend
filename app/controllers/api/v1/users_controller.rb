@@ -6,9 +6,15 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create #create new user
-    @user = User.create(user_params)
-    serialized_data = ActiveModelSerializers::Adapter::Json.new(UsersSerializer.new(@user)).serializable_hash
-    render json: serialized_data, status: 201
+    @user = User.find_by(email: params[:email])
+    if @user
+      serialized_data = ActiveModelSerializers::Adapter::Json.new(UsersSerializer.new(@user)).serializable_hash
+      render json: serialized_data, status: 201
+    else
+      @user = User.create(user_params)
+      serialized_data = ActiveModelSerializers::Adapter::Json.new(UsersSerializer.new(@user)).serializable_hash
+      render json: serialized_data, status: 201
+    end
   end
 
   def show #display a users info
