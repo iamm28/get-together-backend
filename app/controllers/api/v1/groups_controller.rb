@@ -6,8 +6,13 @@ class Api::V1::GroupsController < ApplicationController
   end
 
   def create #create new group
-    @group = Group.create(group_params)
-    render json: @group, status: 201
+    @group = Group.find_by(event_id: params[:event_id])
+    if @group
+      render json: @group, status: 201
+    else
+      @group = Group.create(group_params)
+      render json: @group, status: 201
+    end
   end
 
   def show #display a group info
