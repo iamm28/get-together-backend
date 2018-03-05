@@ -7,6 +7,8 @@ class Api::V1::EventsController < ApplicationController
 
   def create #store another eventbrite event
     @event = Event.find_or_create_by(eventbrite_id: params[:eventbrite_id])
+    # validate later
+    @rsvp = Rsvp.create(eventbrite_id: params[:eventbrite_id], user_id: 1)
     @group = Group.find_or_create_by(event_id: @event.id)
     @user_group = UserGroup.create(group_id: @group.id, user_id: 1)
     # if @event

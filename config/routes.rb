@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :groups, only: [:index, :create, :show, :destroy]
       resources :user_groups, only: [:index, :create, :update, :destroy]
       resources :users, only: [:index, :create, :show, :update, :destroy]
+      resources :rsvps, only: [:index, :create]
     end
   end
 

@@ -3,4 +3,5 @@ class UsersSerializer < ActiveModel::Serializer
   # has_many :user_groups, dependent: :destroy
   # has_many :groups, through: :user_groups
   has_many :events, through: :groups
+  has_many :Rsvps 
 end
