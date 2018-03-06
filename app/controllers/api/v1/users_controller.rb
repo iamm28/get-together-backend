@@ -11,7 +11,7 @@ class Api::V1::UsersController < ApplicationController
       serialized_data = ActiveModelSerializers::Adapter::Json.new(UsersSerializer.new(@user)).serializable_hash
       render json: serialized_data, status: 201
     else
-      @user = User.create(user_params)
+      @user = User.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password], age: params[:age], gender: params[:gender], city: params[:city], state: params[:state], interests: params[:interests])
       serialized_data = ActiveModelSerializers::Adapter::Json.new(UsersSerializer.new(@user)).serializable_hash
       render json: serialized_data, status: 201
     end
@@ -38,7 +38,7 @@ class Api::V1::UsersController < ApplicationController
 
   private
   def user_params #strong params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :age, :gender, :location, :interests)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :age, :gender, :city, :state, :interests)
   end
 
 end

@@ -21,16 +21,16 @@ ActiveRecord::Schema.define(version: 20180302145627) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "rsvps", force: :cascade do |t|
-    t.bigint "eventbrite_id"
-    t.bigint "user_id"
-  end
-
   create_table "groups", force: :cascade do |t|
     t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_groups_on_event_id"
+  end
+
+  create_table "rsvps", force: :cascade do |t|
+    t.bigint "eventbrite_id"
+    t.bigint "user_id"
   end
 
   create_table "user_groups", force: :cascade do |t|
@@ -49,7 +49,8 @@ ActiveRecord::Schema.define(version: 20180302145627) do
     t.string "password_digest"
     t.integer "age"
     t.string "gender"
-    t.string "location"
+    t.string "city"
+    t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "interests", default: [], array: true

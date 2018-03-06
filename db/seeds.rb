@@ -14,9 +14,9 @@ Group.create(event_id: 1)
 Group.create(event_id: 2)
 Group.create(event_id: 3)
 
-User.create(first_name: "Ali", last_name: "Mackay", email: "ali@gmail.com", password: "123", password_confirmation: "123", age: 23, gender: "Female", location: "New York, NY")
-User.create(first_name: "Pete", last_name: "Wheeler", email: "pete@gmail.com", password: "123", password_confirmation: "123", age: 23, gender: "Male", location: "New York, NY")
-User.create(first_name: "Amanda", last_name: "Bynes", email: "amanda@gmail.com", password: "123", password_confirmation: "123", age: 31, gender: "Female", location: "New York, NY")
+User.create(first_name: "Ali", last_name: "Mackay", email: "ali@gmail.com", password: "123", password_confirmation: "123", age: 23, gender: "Female", city: "New York", state: "NY")
+User.create(first_name: "Pete", last_name: "Wheeler", email: "pete@gmail.com", password: "123", password_confirmation: "123", age: 23, gender: "Male", city: "New York", state: "NY")
+User.create(first_name: "Amanda", last_name: "Bynes", email: "amanda@gmail.com", password: "123", password_confirmation: "123", age: 31, gender: "Female", city: "New York", state: "NY")
 
 UserGroup.create(group_id: 1, user_id: 1)
 UserGroup.create(group_id: 2, user_id: 1)
