@@ -17,7 +17,14 @@ class Api::V1::GroupsController < ApplicationController
 
   def show #display a group info
     @group = Group.find(params[:id])
-    render json: @group, status: 200
+    @group_members = @group.users
+    # respond_to do |format|
+    #   format.json  { render :json => {
+    #     :group => @group,
+    #     :group_members => @group_members
+    #   }}
+    # end
+    render json: {group: @group, group_members: @group_members}, status: 200
   end
 
   # def update #update group info
