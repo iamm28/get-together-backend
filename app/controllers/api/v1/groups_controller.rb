@@ -16,6 +16,7 @@ class Api::V1::GroupsController < ApplicationController
   end
 
   def show #display a group info
+    @event = Event.find_by(eventbrite_id: params[:eventbrite_id])
     @group = Group.find(params[:id])
     @group_members = @group.users
     # respond_to do |format|

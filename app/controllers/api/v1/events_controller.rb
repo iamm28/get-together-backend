@@ -13,6 +13,8 @@ class Api::V1::EventsController < ApplicationController
     @rsvp = Rsvp.create(eventbrite_id: params[:eventbrite_id], user_id: 1)
     @group = Group.find_or_create_by(event_id: @event.id)
     @user_group = UserGroup.create(group_id: @group.id, user_id: 1)
+    @group_members = @group.users
+    # render json: {event: @event, group_members: @group_members}, status: 201
     render json: @event, status: 201
   end
 
