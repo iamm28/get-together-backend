@@ -12,8 +12,13 @@ class Api::V1::EventsController < ApplicationController
     # validate later
     @rsvp = Rsvp.create(eventbrite_id: params[:eventbrite_id], user_id: 1)
     @group = Group.find_or_create_by(event_id: @event.id)
+    # deal with finding more than 1 group
     @user_group = UserGroup.create(group_id: @group.id, user_id: 1)
     @group_members = @group.users
+    # if @group.users < 4
+    # user_group = like normal above
+    # else create new group and user group with new group
+
     # render json: {event: @event, group_members: @group_members}, status: 201
     render json: @event, status: 201
   end
