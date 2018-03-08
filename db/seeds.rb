@@ -25,7 +25,7 @@ User.create(first_name: "Ferris", last_name: "Rigby", email: "ferris@gmail.com",
 
 Event.create(eventbrite_id: 42509915301) #Dessert Goals
 Event.create(eventbrite_id: 42722367752) #NYC Food Truck Fest 2018
-Event.create(eventbrite_id: 37617125836) #Prospect Park Photography and Nature Walk
+Event.create(eventbrite_id: 37920617588) #bryant park
 
 Event.create(eventbrite_id: 43366028960) #Amazing Scavenger Hunt Adventure - New York-Central Park
 Event.create(eventbrite_id: 43667194755) #Sunday Morning Crunch to Brunch Dance Class with On Running

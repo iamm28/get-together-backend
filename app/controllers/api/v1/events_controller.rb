@@ -7,19 +7,36 @@ class Api::V1::EventsController < ApplicationController
     # render json: serialized_data, status: 201
   end
 
+  # @event = Event.find_or_create_by(eventbrite_id: params[:eventbrite_id])
+  # # validate later
+  # @rsvp = Rsvp.create(eventbrite_id: params[:eventbrite_id], user_id: 1)
+  # @group = Group.find_or_create_by(event_id: @event.id)
+  # # deal with finding more than 1 group
+  # @user_group = UserGroup.create(group_id: @group.id, user_id: 1)
+  # @group_members = @group.users
+  # # if @group.users < 4
+  # # user_group = like normal above
+  # # else create new group and user group with new group
+  # # render json: {event: @event, group_members: @group_members}, status: 201
+  # render json: @event, status: 201
+
   def create #store another eventbrite event
     @event = Event.find_or_create_by(eventbrite_id: params[:eventbrite_id])
     # validate later
     @rsvp = Rsvp.create(eventbrite_id: params[:eventbrite_id], user_id: 1)
-    @group = Group.find_or_create_by(event_id: @event.id)
-    # deal with finding more than 1 group
-    @user_group = UserGroup.create(group_id: @group.id, user_id: 1)
-    @group_members = @group.users
-    # if @group.users < 4
-    # user_group = like normal above
-    # else create new group and user group with new group
-
-    # render json: {event: @event, group_members: @group_members}, status: 201
+    # byebug
+    @groups = Group.select{|g| g.event_id==@event.id}
+    if @groups.length > 1
+      if @groups.last.users.length == 4
+        @group = Group.create(event_id: @event.id)
+        @user_group = UserGroup.create(group_id: @group.id, user_id: 1)
+      else
+        @user_group = UserGroup.create(group_id: @groups.last.id, user_id: 1)
+      end
+    else
+      @group = Group.create(event_id: @event.id)
+      @user_group = UserGroup.create(group_id: @group.id, user_id: 1)
+    end
     render json: @event, status: 201
   end
 
