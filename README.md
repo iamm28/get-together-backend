@@ -21,8 +21,10 @@ The events then appear one at a time with details so the user can decide if they
 # Installation 
 1. Clone down to your computer. 
 2. CD into project folder on your computer from your terminal.
-3. rails s -p 3001
-4. Ensure that you have the front end up and running: https://github.com/iamm28/get-together-frontend-final
+3. rails db:setup
+4. rails db:migrate
+5. rails s -p 3001
+6. Ensure that you have the front end up and running: https://github.com/iamm28/get-together-frontend-final
 
 # Contributing 
 1. Fork it!
